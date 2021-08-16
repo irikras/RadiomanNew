@@ -8,6 +8,7 @@ import java.util.stream.BaseStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
+    Radio radio = new Radio();
 
     @Test
     public void shouldSetDesiredChannel() {
@@ -25,21 +26,18 @@ class RadioTest {
 
     @Test
     public void shouldSetDesiredVolume() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(7);
         assertEquals(7, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldSetDesiredAnyMinusVolume() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(-7);
         assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldGetNextChannel() {
-        Radio radio = new Radio();
         radio.setCurrentChannel(5);
         radio.increaseChannel();
         assertEquals(6, radio.getCurrentChannel());
