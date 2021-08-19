@@ -62,11 +62,11 @@ public class Radio {
 
     public void setCurrentChannel(int currentChannel) {
         if (currentChannel > maxChannel) {
-            this.currentChannel=minChannel;
+            this.currentChannel = minChannel;
             return;
         }
         if (currentChannel < minChannel) {
-            this.currentChannel=maxChannel;
+            this.currentChannel = maxChannel;
             return;
         }
         this.currentChannel = currentChannel;
