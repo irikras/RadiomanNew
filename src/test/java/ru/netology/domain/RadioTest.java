@@ -10,6 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
+    public void shouldCountNumberOfChannel(){
+        Radio radio = new Radio (5);
+        assertEquals(4, radio.getNumberOfChannel());
+    }
+
+    @Test
     public void shouldSetDesiredChannel() {
         Radio radio = new Radio(9);
         radio.setCurrentChannel(7);

@@ -7,6 +7,7 @@ public class Radio {
     private int minVolume = 0;
     private int currentVolume;
     private int currentChannel;
+    private int numberOfChannel = maxChannel - 1;
     private boolean on;
 
     public Radio() {
@@ -14,10 +15,7 @@ public class Radio {
 
     public Radio(int maxChannel) {
         this.maxChannel = maxChannel;
-    }
-
-    public int getMaxChannel() {
-        return maxChannel;
+        this.numberOfChannel = maxChannel - 1;
     }
 
     public void setMaxChannel(int maxChannel) {
@@ -48,16 +46,16 @@ public class Radio {
         this.minVolume = minVolume;
     }
 
-    public int getCurrentChannel() {
-        return currentChannel;
-    }
-
     public boolean isOn() {
         return on;
     }
 
     public void setOn(boolean on) {
         this.on = on;
+    }
+
+    public int getCurrentChannel() {
+        return currentChannel;
     }
 
     public void setCurrentChannel(int currentChannel) {
@@ -118,5 +116,13 @@ public class Radio {
         } else {
             currentChannel = maxChannel;
         }
+    }
+
+    public int getNumberOfChannel() {
+        return numberOfChannel;
+    }
+
+    public void setNumberOfChannel(int numberOfChannel) {
+        this.numberOfChannel = numberOfChannel;
     }
 }
