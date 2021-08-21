@@ -11,7 +11,7 @@ class RadioTest {
 
     @Test
     public void shouldCountNumberOfChannel(){
-        Radio radio = new Radio (5);
+        Radio radio = new Radio(5);
         assertEquals(4, radio.getNumberOfChannel());
     }
 
