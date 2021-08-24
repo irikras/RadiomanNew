@@ -10,12 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
-    public void shouldCountNumberOfChannel(){
-        Radio radio = new Radio(5);
-        assertEquals(4, radio.getNumberOfChannel());
-    }
-
-    @Test
     public void shouldSetDesiredChannel() {
         Radio radio = new Radio(9);
         radio.setCurrentChannel(7);
@@ -45,23 +39,21 @@ class RadioTest {
 
     @Test
     public void shouldGetNextChannel() {
-        Radio radio = new Radio();
-        radio.setCurrentChannel(5);
+        Radio radio = new Radio(10, 3);
         radio.increaseChannel();
-        assertEquals(6, radio.getCurrentChannel());
+        assertEquals(4, radio.getCurrentChannel());
     }
 
     @Test
     public void shouldGetPrevChannel() {
-        Radio radio = new Radio(9);
-        radio.setCurrentChannel(6);
+        Radio radio = new Radio(8, 6);
         radio.decreaseChannel();
         assertEquals(5, radio.getCurrentChannel());
     }
 
     @Test
     public void shouldIncreaseChannelAboveMax() {
-        Radio radio = new Radio(7);
+        Radio radio = new Radio();
         radio.setCurrentChannel(11);
         radio.increaseChannel();
         assertEquals(0, radio.getMinChannel());
@@ -69,24 +61,21 @@ class RadioTest {
 
     @Test
     public void shouldDecreaseChannelBelowMin() {
-        Radio radio = new Radio(9);
-        radio.setCurrentChannel(-9);
+        Radio radio = new Radio(9, -9);
         radio.decreaseChannel();
         assertEquals(0, radio.getMinChannel());
     }
 
     @Test
     public void shouldPreviousChannelFromMin() {
-        Radio radio = new Radio(9);
-        radio.setCurrentChannel(0);
+        Radio radio = new Radio(7, 0);
         radio.decreaseChannel();
-        assertEquals(9, radio.getCurrentChannel());
+        assertEquals(7, radio.getCurrentChannel());
     }
 
     @Test
     public void shouldNextChannelFromMax() {
-        Radio radio = new Radio(5);
-        radio.setCurrentChannel(5);
+        Radio radio = new Radio(9, 10);
         radio.increaseChannel();
         assertEquals(0, radio.getCurrentChannel());
     }
