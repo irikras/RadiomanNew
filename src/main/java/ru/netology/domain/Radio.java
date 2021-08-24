@@ -1,19 +1,42 @@
 package ru.netology.domain;
 
 public class Radio {
-    private int maxChannel = 9;
+    private int maxStation;
+    private int numberOfChannel = 10;
     private int minChannel = 0;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
     private int currentVolume;
     private int currentChannel;
+    private boolean on;
 
-    public int getMaxChannel() {
-        return maxChannel;
+    public Radio() {
     }
 
-    public void setMaxChannel(int maxChannel) {
-        this.maxChannel = maxChannel;
+    public Radio(int numberOfChannel) {
+        this.numberOfChannel = numberOfChannel;
+        this.maxStation = numberOfChannel - 1;
+    }
+
+    public Radio(int maxStation, int currentChannel) {
+        this.maxStation = maxStation;
+        this.currentChannel = currentChannel;
+    }
+
+    public int getMaxStation() {
+        return maxStation;
+    }
+
+    public void setMaxStation(int maxStation) {
+        this.maxStation = maxStation;
+    }
+
+    public int getNumberOfChannel() {
+        return numberOfChannel;
+    }
+
+    public void setNumberOfChannel(int numberOfChannel) {
+        this.numberOfChannel = numberOfChannel;
     }
 
     public int getMinChannel() {
@@ -40,15 +63,25 @@ public class Radio {
         this.minVolume = minVolume;
     }
 
+    public boolean isOn() {
+        return on;
+    }
+
+    public void setOn(boolean on) {
+        this.on = on;
+    }
+
     public int getCurrentChannel() {
         return currentChannel;
     }
 
     public void setCurrentChannel(int currentChannel) {
-        if (currentChannel > maxChannel) {
+        if (currentChannel > numberOfChannel) {
+            this.currentChannel = minChannel;
             return;
         }
         if (currentChannel < minChannel) {
+            this.currentChannel = numberOfChannel;
             return;
         }
         this.currentChannel = currentChannel;
@@ -87,7 +120,7 @@ public class Radio {
     }
 
     public void increaseChannel() {
-        if (currentChannel < maxChannel) {
+        if (currentChannel < maxStation) {
             currentChannel++;
         } else {
             currentChannel = minChannel;
@@ -98,7 +131,7 @@ public class Radio {
         if (currentChannel > minChannel) {
             currentChannel--;
         } else {
-            currentChannel = maxChannel;
+            currentChannel = maxStation;
         }
     }
 }
